@@ -1,0 +1,55 @@
+<div class="vertical-timeline">
+  <div class="note">
+    <div class="note-timestamp">
+    </div>
+    <div class="note-line">
+      <div class="note-icon-wrapper">
+        <div class="note-icon">
+          <mat-icon>list</mat-icon>
+        </div>
+      </div>
+      <div class="note-content">
+        <app-note-input></app-note-input>
+      </div>
+    </div>
+  </div>
+
+  <div *ngFor="let note of notes" >
+    <div class="note">
+      <div class="note-timestamp">
+        <span>{{ note.timestamp | date:'shortTime' }}</span>
+      </div>
+      <div class="note-line">
+        <div class="note-icon-wrapper">
+          <div class="note-icon">
+            <mat-icon>{{ getIconForType(note.type) }}</mat-icon>
+          </div>
+        </div>
+        <div class="note-content">
+          <div class="row">
+            <div class="note-header">
+              <span class="blue-txt">You</span>
+              <span class="note-user">{{ getMessageByType(note.type) }}</span>
+              <span class="blue-txt"> Milton Romaguera</span>
+            </div>
+            <div class="note-body">
+              <span>{{ note.content }}</span>
+            </div>
+          </div>
+
+          <button id="menu-btn" mat-icon-button [matMenuTriggerFor]="menu" aria-label="Menu icon">
+            <mat-icon>more_vert</mat-icon>
+          </button>
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item (click)="deleteNote(note.id)">
+              <mat-icon>delete</mat-icon>
+              <span>Delete</span>
+            </button>
+          </mat-menu>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

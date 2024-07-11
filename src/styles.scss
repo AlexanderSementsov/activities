@@ -1,1 +1,34 @@
 /* You can add global styles to this file, and also import other style files */
+.note-input {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.note-input textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.note-types button {
+  margin-right: 5px;
+}
+
+.activity-feed .note {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.note-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.note-content {
+  margin-top: 10px;
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

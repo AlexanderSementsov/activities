@@ -1,0 +1,40 @@
+<div class="note-input">
+  <form [formGroup]="noteForm" (ngSubmit)="submitNote()">
+    <mat-form-field id="note-field">
+      <textarea
+        matInput
+        formControlName="content"
+        placeholder="Add a note about Milton Romaguera..."
+        (focus)="onFocus()"
+        (blur)="onBlur()"
+        [rows]="isExpanded ? 3 : 1"
+        [ngClass]="{'expanded': isExpanded}">
+      </textarea>
+    </mat-form-field>
+    <div class="actions">
+      <div class="note-types">
+        <button class="icon-btn" *ngFor="let type of types" (click)="selectType(type)"
+                [class.active]="noteForm.get('type')?.value === type">
+          <app-icon [type]="type"></app-icon>
+        </button>
+      </div>
+      <button
+        id="submit-btn"
+        mat-raised-button
+        color="primary"
+        type="submit"
+        [disabled]="noteForm.invalid"
+      >
+        Submit
+      </button>
+    </div>
+  </form>
+</div>
+
+<mat-error
+  *ngIf="
+    noteForm.get('content')?.hasError('required') &&
+    (noteForm.get('content')?.touched || noteForm.get('content')?.dirty)"
+>
+  Note content is required
+</mat-error>
